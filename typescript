@@ -1,0 +1,249 @@
+Script started on Sat Mar 22 09:33:29 2014
+[?1034hbash-3.2$ whoami
+SimpleMithi
+bash-3.2$ whoami[3Peitscript[1Pclearscript[1Pclearscript[1Pclearscript[1Pclearscript[1Pclear[K[K[K[K[Kcat Assignment2_Mithila_DeSilva.c
+/*I declare that the attached assignment is wholly my
+ own work in accordance with Seneca Academic Policy.  No part of this
+ assignment has been copied manually or electronically from any
+ other source (including web sites) or distributed to other students.
+ 
+ Name   _Mithila DeSilva_   Student ID  _068545136_*/
+
+#include <stdio.h>
+//Declaring functions
+void getValues(int *a,int *b);
+void getCounts(int a, int *c, int *d, int *e, int *f, int *g);
+void translate(int a, int b, int *c, int *d, int *e, int *f, int *g);
+void calculate(int *a);
+
+int main()
+{
+    //declaring variables
+    int firstValue, secondValue, tenThousands, thousands, hundreds, tens, ones;
+    char answer;
+    
+    printf("%53s", "Chinese Translation Program\n");
+    printf("==============================================================================\n");
+    
+    //Calling functions
+    do{
+    getValues(&firstValue, &secondValue);
+    printf("\n|%10s |", "Numbers");
+    printf("%39s", " Chinese Equivalent ");
+    printf("%26s\n", "|");
+    printf("------------------------------------------------------------------------------\n");
+    getCounts(firstValue, &tenThousands, &thousands, &hundreds, &tens, &ones);
+    translate(firstValue, secondValue, &tenThousands, &thousands, &hundreds, &tens, &ones);
+        printf("\nDo you wish to translate again (Y/N)?");
+        scanf(" %c", &answer);
+    }while (answer == 'y' || answer == 'Y');
+    
+return 0;
+}
+//Defining functions
+void getValues(int *a,int *b)
+{
+    int temp;
+    //Take first nuber
+    do {
+        printf("\nPlease enter the first number in range : ");
+        temp=scanf("%d", a);
+        while(getchar() != '\n');
+        if (*a <0 || *a >100000000 || temp == 0) {
+            printf("Invalid Input\n");
+        }
+    } while (*a <0 || *a >100000000 || temp == 0);
+    //Take second number
+    do {
+        printf("Please enter the second number in range: ");
+        temp=scanf("%d", b);
+        while(getchar() != '\n');
+        if (*b <0 || *b >100000000 || *b < *a || temp == 0) {
+            printf("Invalid Input\n");
+        }
+   } while (*b <0 || *b >100000000 || *b < *a || temp == 0);
+}
+
+void getCounts(int a, int *c, int *d, int *e, int *f, int *g)
+{
+    //Assigning(10,000s)
+    *c= a / 10000;
+    a= a - (*c * 10000);
+    
+    //Assigning(1,000s)
+    *d= a / 1000;
+    a= a - (*d * 1000);
+    
+    //Assigning(100s)
+    *e= a / 100;
+    a= a - (*e * 100);
+    
+    //Assigning(10s)
+    *f= a / 10;
+    a= a - (*f * 10);
+    
+    //Assigning(1s)
+    *g= a / 1;
+}
+
+void translate(int a, int b, int *c, int *d, int *e, int *f, int *g)
+
+{
+for (int i= a; i <= b; i++) {
+    
+    printf("|%10d |", i);
+    
+    //call function getCounts
+    getCounts(i, c, d, e, f, g);
+    
+    //Calculations(10,000s)
+    if (*c > 9) {
+        getCounts(*c, c, d, e, f, g);
+        //Calculations(1,000s)
+        if (*d > 0) {
+            calculate(d);
+            printf(" qian ");
+        }
+        //Calculations(100s)
+        if (*e > 0) {
+            calculate(e);
+            printf(" bai ");
+        }
+        //Calculations(10s)
+        if (*f > 0) {
+            calculate(f);
+            printf(" shi ");
+        }
+        //Calculations(1s)
+        calculate(g);
+        printf(" wan ");
+        getCounts(i, c, d, e, f, g);
+    } else if (*c > 0) {
+        calculate(c);
+        printf(" wan ");
+    }
+    //Calculations(1,000s)
+    if (*d > 0) {
+        calculate(d);
+        printf(" qian ");
+    }
+    //Calculations(100s)
+    if (*e > 0) {
+        calculate(e);
+        printf(" bai ");
+    }
+    //Calculations(10s)
+    if (*f > 0) {
+        calculate(f);
+        printf(" shi ");
+    }
+    //Calculations(1s)
+    calculate(g);
+    printf(" |\n");
+    }
+}
+void calculate(int *a)
+{
+    switch (*a) {
+        case 1:
+            printf("yi ");
+            break;
+        case 2:
+            printf("er ");
+            break;
+        case 3:
+            printf("san ");
+            break;
+        case 4:
+            printf("si ");
+            break;
+        case 5:
+            printf("wu ");
+            break;
+        case 6:
+            printf("liu ");
+            break;
+        case 7:
+            printf("qi ");
+            break;
+        case 8:
+            printf("ba ");
+            break;
+        case 9:
+            printf("jiu ");
+            break;
+        default:
+            break;
+    }
+}
+
+
+
+bash-3.2$ gcccat Assignment2_Mithila_DeSilva.c[1P Assignment2_Mithila_DeSilva.c[C[C[C[C[C[C[C[C[C[C[C[C[1P Assignment2_Mithila_DeSilva.c[C[C[C[C[C[C[C[C[C[C[C[1P Assignment2_Mithila_DeSilva.c[C[C[C[C[C[C[C[C[C[Cg Assignment2_Mithila_DeSilva.c[C[C[C[C[C[C[C[C[C[C[Cc Assignment2_Mithila_DeSilva.c[C[C[C[C[C[C[C[C[C[C[C[Cc Assignment2_Mithila_DeSilva.c[C[C[C[C[C[C[C[C[C[C[C[C[C
+bash-3.2$ ./a.out
+                         Chinese Translation Program
+==============================================================================
+
+Please enter the first number in range : 1
+Please enter the second number in range: 9
+
+|   Numbers |                    Chinese Equivalent                          |
+------------------------------------------------------------------------------
+|         1 |yi  |
+|         2 |er  |
+|         3 |san  |
+|         4 |si  |
+|         5 |wu  |
+|         6 |liu  |
+|         7 |qi  |
+|         8 |ba  |
+|         9 |jiu  |
+
+Do you wish to translate again (Y/N)?y
+
+Please enter the first number in range : 50403
+Please enter the second number in range: 50403
+
+|   Numbers |                    Chinese Equivalent                          |
+------------------------------------------------------------------------------
+|     50403 |wu  wan si  bai san  |
+
+Do you wish to translate again (Y/N)?y
+
+Please enter the first number in range : 56789788
+Please enter the second number in range: 56789800
+
+|   Numbers |                    Chinese Equivalent                          |
+------------------------------------------------------------------------------
+|  56789788 |wu  qian liu  bai qi  shi ba  wan jiu  qian qi  bai ba  shi ba  |
+|  56789789 |wu  qian liu  bai qi  shi ba  wan jiu  qian qi  bai ba  shi jiu  |
+|  56789790 |wu  qian liu  bai qi  shi ba  wan jiu  qian qi  bai jiu  shi  |
+|  56789791 |wu  qian liu  bai qi  shi ba  wan jiu  qian qi  bai jiu  shi yi  |
+|  56789792 |wu  qian liu  bai qi  shi ba  wan jiu  qian qi  bai jiu  shi er  |
+|  56789793 |wu  qian liu  bai qi  shi ba  wan jiu  qian qi  bai jiu  shi san  |
+|  56789794 |wu  qian liu  bai qi  shi ba  wan jiu  qian qi  bai jiu  shi si  |
+|  56789795 |wu  qian liu  bai qi  shi ba  wan jiu  qian qi  bai jiu  shi wu  |
+|  56789796 |wu  qian liu  bai qi  shi ba  wan jiu  qian qi  bai jiu  shi liu  |
+|  56789797 |wu  qian liu  bai qi  shi ba  wan jiu  qian qi  bai jiu  shi qi  |
+|  56789798 |wu  qian liu  bai qi  shi ba  wan jiu  qian qi  bai jiu  shi ba  |
+|  56789799 |wu  qian liu  bai qi  shi ba  wan jiu  qian qi  bai jiu  shi jiu  |
+|  56789800 |wu  qian liu  bai qi  shi ba  wan jiu  qian ba  bai  |
+
+Do you wish to translate again (Y/N)?y
+
+Please enter the first number in range : 99999995
+Please enter the second number in range: 99999999
+
+|   Numbers |                    Chinese Equivalent                          |
+------------------------------------------------------------------------------
+|  99999995 |jiu  qian jiu  bai jiu  shi jiu  wan jiu  qian jiu  bai jiu  shi wu  |
+|  99999996 |jiu  qian jiu  bai jiu  shi jiu  wan jiu  qian jiu  bai jiu  shi liu  |
+|  99999997 |jiu  qian jiu  bai jiu  shi jiu  wan jiu  qian jiu  bai jiu  shi qi  |
+|  99999998 |jiu  qian jiu  bai jiu  shi jiu  wan jiu  qian jiu  bai jiu  shi ba  |
+|  99999999 |jiu  qian jiu  bai jiu  shi jiu  wan jiu  qian jiu  bai jiu  shi jiu  |
+
+Do you wish to translate again (Y/N)?n
+bash-3.2$ exit
+exit
+
+Script done on Sat Mar 22 09:34:55 2014
